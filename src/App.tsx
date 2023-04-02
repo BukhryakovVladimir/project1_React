@@ -1,0 +1,23 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Videos from "./pages/Videos";
+import More from "./pages/More";
+import Channels from "./pages/Channels";
+import Games from "./pages/Games";
+import Followed from "./pages/Followed";
+import Clips from "./pages/Clips";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route index element={<Channels />} />
+      <Route path="/Channels" element={<Channels />} />
+      <Route path="/Games" element={<Games />} />
+      <Route path="/Followed" element={<Followed />} />
+      <Route path="/Clips" element={<Clips />} />
+      <Route path="/Channels" element={<Channels />} />
+      <Route path="/Videos" element={<Videos />} />
+      <Route path="/More" element={<More />} />
+    </Routes>
+  );
+}

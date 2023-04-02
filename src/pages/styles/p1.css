@@ -1,0 +1,171 @@
+* {
+  color: white;
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 1.02em;
+  vertical-align: baseline;
+  font-family: serif;
+}
+
+.divHeader {
+  position: fixed;
+}
+a:link,
+a:visited {
+  padding: 0.4em 0.6em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover,
+a:active {
+  background-color: #2a2a2a;
+}
+
+.divHeader .current {
+  color: #ffff80;
+}
+
+a.current {
+  pointer-events: none;
+}
+
+a#userimg {
+  padding: 0px 0px;
+}
+
+img {
+  position: fixed;
+  top: 0em;
+  right: 0em;
+}
+
+td {
+  font-size: 1.5em;
+}
+
+form {
+  border: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 95%;
+  padding: 0.4em 0.6em;
+  display: inline-block;
+  border: 1px solid #2a2a2a;
+  box-sizing: border-box;
+}
+
+small {
+  color: #852222;
+}
+
+#login {
+  position: fixed;
+  top: 0px;
+  right: 125px;
+}
+
+#sign_up {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+#logout {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+button {
+  padding: 0.4em 0.6em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2a2a2a;
+}
+
+.container {
+  padding-top: 0px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+label.small_link {
+  font-size: 0.8em;
+  float: right;
+  padding: 0px;
+}
+
+@media screen and (max-width: 300px) {
+  label.small_link {
+    display: block;
+    float: none;
+  }
+}
+
+.pop-up {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-top: 60px;
+}
+
+.pop-up-content {
+  background-color: #1a1a1a;
+  margin: 5px auto;
+  border: none;
+  width: 450px;
+}
+
+.input-control p {
+  visibility: hidden;
+  position: relative;
+  bottom: 0;
+  left: 12px;
+}
+
+.input-control.success input {
+  border-color: #c0f892;
+}
+
+.input-control.error input {
+  border-color: #852222;
+}
+
+.input-control.error p {
+  visibility: visible;
+  color: #852222;
+}
+
+.login_wrong {
+  position: relative;
+  color: #852222;
+  left: 12px;
+}
+
+.close {
+  font-size: 1.25em;
+  position: relative;
+  margin-left: 17.81em;
+}
