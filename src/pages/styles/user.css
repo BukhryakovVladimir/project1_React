@@ -1,0 +1,17 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+#no_such_user {
+  position: relative;
+  object-fit: none;
+  left: 45em;
+  top: 15em;
+}
+
+#user {
+  font-size: 30px;
+  position: relative;
+  left: 2em;
+  top: 20em;
+}

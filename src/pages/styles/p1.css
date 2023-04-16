@@ -34,18 +34,14 @@ a.current {
   pointer-events: none;
 }
 
-a#userimg {
-  padding: 0px 0px;
-}
-
-img {
-  position: fixed;
-  top: 0em;
-  right: 0em;
+tr {
+  background-color: #8a8a8a;
 }
 
 td {
   font-size: 1.5em;
+  position: relative;
+  top: 0px;
 }
 
 form {
@@ -168,4 +164,15 @@ label.small_link {
   font-size: 1.25em;
   position: relative;
   margin-left: 17.81em;
+}
+
+#logo_td {
+  position: relative;
+  top: 9px;
+}
+
+#logo {
+  width: 60px;
+  top: 7px;
+  height: 38px;
 }

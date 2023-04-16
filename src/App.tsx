@@ -6,6 +6,7 @@ import Channels from "./pages/Channels";
 import Games from "./pages/Games";
 import Followed from "./pages/Followed";
 import Clips from "./pages/Clips";
+import User from "./pages/User";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/Channels" element={<Channels />} />
       <Route path="/Videos" element={<Videos />} />
       <Route path="/More" element={<More />} />
+      <Route path="*" element={<User username={window.location.href} />} />
     </Routes>
   );
 }

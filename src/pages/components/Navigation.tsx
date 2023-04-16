@@ -16,7 +16,7 @@ const Navigation = (props: any) => {
       credentials: "include",
     });
   };
-  console.log(username);
+  console.log(username); // remove later
   useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:8000/api/user", {
@@ -44,6 +44,9 @@ const Navigation = (props: any) => {
           <table cellSpacing="0" cellPadding="0" id="header">
             <tbody>
               <tr>
+                <td id="logo_td">
+                  <img id="logo" src="./corona_logo.png" alt="" />
+                </td>
                 <td id="channel">
                   <Link to="/Channels" className={props.current[0]}>
                     Channels
