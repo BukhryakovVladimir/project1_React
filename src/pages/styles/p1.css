@@ -176,3 +176,32 @@ label.small_link {
   top: 7px;
   height: 38px;
 }
+
+#userimage {
+  position: relative;
+  width: 57px;
+  height: 57px;
+  display: block;
+}
+
+#username {
+  position: fixed;
+  top: 0px;
+  right: 57px;
+}
+
+#dropdown {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+#dropdown_button {
+  padding: 0 0;
+  margin: 0 0;
+  border: 0 0;
+}
+
+#dropdown_button:hover {
+  background-color: #2a2a2a;
+}

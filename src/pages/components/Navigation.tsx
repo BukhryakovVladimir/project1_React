@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import Dropdown from "./Dropdown";
 import "../styles/p1.css";
 
 const Navigation = (props: any) => {
   const [show_Login_Form, setshow_Login_Form] = useState(false);
   const [show_Sign_up_Form, setshow_Sign_up_Form] = useState(false);
+  const [show_Dropdown, setshow_Dropdown] = useState(false);
   const [username, setUsername] = useState("");
 
-  const logout = async () => {
-    await fetch("http://localhost:8000/api/logout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    });
-  };
   console.log(username); // remove later
   useEffect(() => {
     (async () => {
@@ -96,19 +91,25 @@ const Navigation = (props: any) => {
                   </>
                 ) : (
                   <>
-                    <td id="login">
-                      <button> {username} </button>
-                    </td>
-                    <td id="sign_up">
-                      <Link
+                    <td id="dropdown">
+                      {/* <Link
                         to={window.location.pathname}
                         onClick={() => {
                           logout();
                           window.location.reload();
                         }}
+                      > */}
+                      <button
+                        id="dropdown_button"
+                        onClick={() => setshow_Dropdown(!show_Dropdown)}
                       >
-                        Log out
-                      </Link>
+                        <img
+                          id="userimage"
+                          src="./default_userimage.png"
+                          alt=""
+                        />
+                      </button>
+                      {/* </Link> */}
                     </td>
                   </>
                 )}
@@ -122,6 +123,9 @@ const Navigation = (props: any) => {
         ) : null}
         {show_Sign_up_Form ? (
           <SignupForm setshow_Sign_up_Form={setshow_Sign_up_Form} />
+        ) : null}
+        {show_Dropdown ? (
+          <Dropdown username={username} setshow_Dropdown={setshow_Dropdown} />
         ) : null}
       </div>
     </div>
