@@ -8,6 +8,7 @@ const LoginForm = (props: any) => {
 
     document.removeEventListener("mousedown", handleOutsideClick, false);
     document.removeEventListener("keydown", closeOnEscape, false);
+    window.location.reload();
   };
 
   const handleOutsideClick = (e: any) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { encode as base64_encode } from "base-64";
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -10,6 +11,7 @@ const Navigation = (props: any) => {
   const [show_Sign_up_Form, setshow_Sign_up_Form] = useState(false);
   const [show_Dropdown, setshow_Dropdown] = useState(false);
   const [username, setUsername] = useState("");
+  const [userImage_topright, setUserImage_topright] = useState("");
 
   console.log(username); // remove later
   useEffect(() => {
@@ -23,7 +25,24 @@ const Navigation = (props: any) => {
 
       setUsername(content.username);
     })();
-  });
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        "http://localhost:8000/api/userimageTopright",
+        {
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      const content = await response.json();
+
+      setUserImage_topright(content);
+      console.log(content);
+    })();
+  }, []);
 
   return (
     <div lang="en" dir="ltr">
@@ -105,7 +124,9 @@ const Navigation = (props: any) => {
                       >
                         <img
                           id="userimage"
-                          src="./default_userimage.png"
+                          src={`
+                          ${userImage_topright}
+                          `}
                           alt=""
                         />
                       </button>

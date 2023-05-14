@@ -38,16 +38,17 @@ const Dropdown = (props: any) => {
     <div id="login_form" className="dropdown_pop-up">
       <div className="dropdown_pop-up-content" id="form" ref={refForm}>
         <div className="dropdown_container">
+          <button id="dropdown_username">{props.username}</button>
           <button
             id="dropdown_logout"
             onClick={() => {
               logout();
               handleClick();
+              window.location.reload();
             }}
           >
             Log out
           </button>
-          <button id="dropdown_username">{props.username}</button>
         </div>
       </div>
     </div>
