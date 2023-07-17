@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { encode as base64_encode } from "base-64";
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -13,7 +12,7 @@ const Navigation = (props: any) => {
   const [username, setUsername] = useState("");
   const [userImage_topright, setUserImage_topright] = useState("");
 
-  console.log(username); // remove later
+  //console.log(username); // remove later
   useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:8000/api/user", {
@@ -40,7 +39,7 @@ const Navigation = (props: any) => {
       const content = await response.json();
 
       setUserImage_topright(content);
-      console.log(content);
+      //console.log(content);
     })();
   }, []);
 
@@ -91,7 +90,7 @@ const Navigation = (props: any) => {
                     More
                   </Link>
                 </td>
-                {username === "" || typeof username === "undefined" ? (
+                {username === "" || typeof username === "undefined" ? ( // change to JWT, so that it would not render every time page reloads
                   <>
                     <td id="login">
                       <button

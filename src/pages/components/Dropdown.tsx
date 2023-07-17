@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import "../styles/dropdown.css";
+import { Link } from "react-router-dom";
 
 const Dropdown = (props: any) => {
   const refForm = useRef(null);
@@ -39,6 +40,9 @@ const Dropdown = (props: any) => {
       <div className="dropdown_pop-up-content" id="form" ref={refForm}>
         <div className="dropdown_container">
           <button id="dropdown_username">{props.username}</button>
+          <Link id="dropdown_UserSettings" to="/User_Settings">
+            User settings
+          </Link>
           <button
             id="dropdown_logout"
             onClick={() => {

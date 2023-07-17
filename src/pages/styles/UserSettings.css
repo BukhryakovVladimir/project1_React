@@ -1,0 +1,45 @@
+.User_settings {
+  left: 65px;
+  font-size: 26px;
+  top: 120px;
+  font-family: serif;
+  position: relative;
+}
+
+#Change_userimg {
+  position: relative;
+  top: 0px;
+}
+
+#Change_username {
+  position: relative;
+  top: 40px;
+}
+
+#Change_password {
+  position: relative;
+  top: 80px;
+}
+
+#Confirm_password {
+  position: relative;
+  top: 120px;
+}
+
+#fileChoose {
+  font-size: 26px;
+  font-family: serif;
+  position: relative;
+  left: 30px;
+}
+
+#fileUpload {
+  font-size: 26px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 4px 10px;
+  color: black;
+  font-family: serif;
+  position: relative;
+  left: 10px;
+}
