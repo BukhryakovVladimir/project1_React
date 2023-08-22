@@ -3,9 +3,25 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 const SignupForm = (props: any) => {
   const refForm = useRef(null);
 
+  const [username, setUsername] = useState(""); //chagne later so that useffect called less often
+  const [email, setEmail] = useState(""); // this too
+  const [password, setPassword] = useState("");
+
+  const [usernameExists, setUsernameExists] = useState();
+  const [emailExists, setEmailExists] = useState();
+
   var email_valid = false;
   var username_valid = false;
   var password_valid = false;
+
+  let form_sign_up: HTMLElement = null;
+  let username_sign_up: HTMLElement = null;
+  let email_sign_up: HTMLElement = null;
+  let password_sign_up: HTMLElement = null;
+
+  let usernameValue: string = "";
+  let emailValue: string = "";
+  let passwordValue: string = "";
 
   const handleClick_valid = () => {
     if (username_valid && email_valid && password_valid) {
@@ -35,25 +51,24 @@ const SignupForm = (props: any) => {
     }
   };
 
-  let form_sign_up: HTMLElement = null;
-  let username_sign_up: HTMLElement = null;
-  let email_sign_up: HTMLElement = null;
-  let password_sign_up: HTMLElement = null;
-
   useEffect(() => {
     form_sign_up = document.querySelector("#sign_up_form");
     username_sign_up = document.querySelector("#username_sign_up");
     email_sign_up = document.querySelector("#email_sign_up");
     password_sign_up = document.querySelector("#password_sign_up");
 
-    console.log(form_sign_up);
-    console.log(email_sign_up);
-    console.log(username_sign_up);
-    console.log(password_sign_up);
+    // console.log(form_sign_up);
+    // console.log(email_sign_up);
+    // console.log(username_sign_up);
+    // console.log(password_sign_up);
 
     if (username_sign_up || email_sign_up || password_sign_up) {
       form_sign_up.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        usernameValue = (username_sign_up as HTMLInputElement).value.trim();
+        emailValue = (email_sign_up as HTMLInputElement).value.trim();
+        passwordValue = (password_sign_up as HTMLInputElement).value.trim();
 
         checkInputs();
 
@@ -63,14 +78,48 @@ const SignupForm = (props: any) => {
     }
   });
 
-  function checkInputs() {
-    const usernameValue = (username_sign_up as HTMLInputElement).value.trim();
-    const emailValue = (email_sign_up as HTMLInputElement).value.trim();
-    const passwordValue = (password_sign_up as HTMLInputElement).value.trim();
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("http://localhost:8000/api/finduser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          username,
+        }),
+      });
+      setUsernameExists(await response.json());
+      // console.log(
+      //   JSON.stringify({
+      //     username,
+      //   })
+      // );
+    })();
+  }, [username]);
 
-    console.log(usernameValue);
-    console.log(emailValue);
-    console.log(passwordValue);
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("http://localhost:8000/api/findemail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+        }),
+      });
+      setEmailExists(await response.json());
+      // console.log(
+      //   JSON.stringify({
+      //     email,
+      //   })
+      // );
+    })();
+  }, [email]);
+
+  function checkInputs() {
+    // console.log(usernameExists);
+    // console.log(emailExists);
+    // console.log(passwordValue);
 
     if (emailValue.length <= 255) {
       if (emailValue === "") {
@@ -80,18 +129,29 @@ const SignupForm = (props: any) => {
         setErrorFor(email_sign_up, "Email is invalid");
         email_valid = false;
       } else {
-        setSuccessFor(email_sign_up);
-        email_valid = true;
+        if (emailValue === emailExists) {
+          setErrorFor(email_sign_up, "Email already taken");
+          email_valid = false;
+        } else {
+          setSuccessFor(email_sign_up);
+          email_valid = true;
+        }
       }
     } else {
       setErrorFor(email_sign_up, "Email is too long");
       email_valid = false;
     }
 
+    //should rewrite using switch(usernameValue) or other way because it looks awful now
     if (usernameValue.length >= 3 && usernameValue.length <= 30) {
       if (/^[A-Za-z0-9_]*$/.test(usernameValue)) {
-        setSuccessFor(username_sign_up);
-        username_valid = true;
+        if (usernameValue === usernameExists) {
+          setErrorFor(username_sign_up, "Username already taken");
+          username_valid = false;
+        } else {
+          setSuccessFor(username_sign_up);
+          username_valid = true;
+        }
       } else {
         setErrorFor(
           username_sign_up,
@@ -150,10 +210,6 @@ const SignupForm = (props: any) => {
 
   document.addEventListener("mousedown", handleOutsideClick, false);
   document.addEventListener("keydown", closeOnEscape, false);
-
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();

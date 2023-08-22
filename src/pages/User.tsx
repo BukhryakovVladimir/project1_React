@@ -15,7 +15,7 @@ const User = (props: any) => {
         }),
       });
       setContent(await response.json());
-      //console.log(content);
+      console.log(content);
     })();
   }, []);
 
@@ -25,7 +25,7 @@ const User = (props: any) => {
   //console.log(username);
   return (
     <>
-      {console.log(content, username)}
+      {/* {console.log(content, username)} */}
       <Navigation current={["", "", "", "", "", ""]} />
       {content === username ? (
         <div lang="en" dir="ltr">
