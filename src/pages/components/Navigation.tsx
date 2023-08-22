@@ -93,16 +93,12 @@ const Navigation = (props: any) => {
                 {username === "" || typeof username === "undefined" ? ( // change to JWT, so that it would not render every time page reloads
                   <>
                     <td id="login">
-                      <button
-                        onClick={() => setshow_Login_Form(!show_Login_Form)}
-                      >
+                      <button onClick={() => setshow_Login_Form(true)}>
                         Log in
                       </button>
                     </td>
                     <td id="sign_up">
-                      <button
-                        onClick={() => setshow_Sign_up_Form(!show_Sign_up_Form)}
-                      >
+                      <button onClick={() => setshow_Sign_up_Form(true)}>
                         Sign up
                       </button>
                     </td>
@@ -142,7 +138,10 @@ const Navigation = (props: any) => {
           <LoginForm setshow_Login_Form={setshow_Login_Form} />
         ) : null}
         {show_Sign_up_Form ? (
-          <SignupForm setshow_Sign_up_Form={setshow_Sign_up_Form} />
+          <SignupForm
+            show_Sign_up_Form={show_Sign_up_Form}
+            setshow_Sign_up_Form={setshow_Sign_up_Form}
+          />
         ) : null}
         {show_Dropdown ? (
           <Dropdown username={username} setshow_Dropdown={setshow_Dropdown} />

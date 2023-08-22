@@ -4,7 +4,7 @@ const LoginForm = (props: any) => {
   const refForm = useRef(null);
 
   const handleClick = () => {
-    props.setshow_Login_Form();
+    props.setshow_Login_Form(false);
 
     document.removeEventListener("mousedown", handleOutsideClick, false);
     document.removeEventListener("keydown", closeOnEscape, false);
