@@ -10,9 +10,9 @@ const SignupForm = (props: any) => {
   const [usernameExists, setUsernameExists] = useState();
   const [emailExists, setEmailExists] = useState();
 
-  var email_valid = false;
-  var username_valid = false;
-  var password_valid = false;
+  let email_valid = false;
+  let username_valid = false;
+  let password_valid = false;
 
   let form_sign_up: HTMLElement = null;
   let username_sign_up: HTMLElement = null;

@@ -89,42 +89,7 @@ form_login.addEventListener("submit", (e) => {
     HTMLFormElement.prototype.submit.call(form_login);
 });
 
-function checkInputs_login() {
-  const emailValue = (email_login as HTMLInputElement).value.trim();
-  const passwordValue = (password_login as HTMLInputElement).value.trim();
-
-  if (emailValue.length <= 255) {
-    if (emailValue === "") {
-      setErrorFor(email_login, "Email can't be empty");
-      email_valid_login = false;
-    } else if (!isEmail(emailValue)) {
-      setErrorFor(email_login, "Email is invalid");
-      email_valid_login = false;
-    } else {
-      setSuccessFor(email_login);
-      email_valid_login = true;
-    }
-  } else {
-    setErrorFor(email_login, "Email is too long");
-    email_valid_login = false;
-  }
-
-  if (passwordValue.length >= 8) {
-    if (/^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*]*$/.test(passwordValue)) {
-      setSuccessFor(password_login);
-      password_valid_login = true;
-    } else {
-      setErrorFor(
-        password_login,
-        "Password must contain letters and numbers(special characters !@#$%^&* are allowed)"
-      );
-      password_valid_login = false;
-    }
-  } else {
-    setErrorFor(password_login, "Password must be at least 8 characters");
-    password_valid_login = false;
-  }
-}
+function checkInputs_login() {}
 
 function setErrorFor(input: any, message: any) {
   const inputControl = input.parentElement;
